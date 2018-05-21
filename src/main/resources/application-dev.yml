@@ -1,0 +1,8 @@
+server:
+  port: 12888
+  context-path: /girl
+parmDemo: haha
+girl:
+  hair: yellow
+  language: English
+
