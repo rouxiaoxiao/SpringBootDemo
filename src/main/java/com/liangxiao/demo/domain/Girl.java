@@ -1,8 +1,9 @@
-package com.liangxiao.demo;
+package com.liangxiao.demo.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 /**
  * 新建一个女孩类对应MySQL中的一个表
@@ -16,6 +17,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
     private String hair;
+    @Min(value = 18, message = "未成年")
     private Integer age;
 
     public Integer getId() {

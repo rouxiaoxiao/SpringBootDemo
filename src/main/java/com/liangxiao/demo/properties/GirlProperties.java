@@ -1,4 +1,4 @@
-package com.liangxiao.demo;
+package com.liangxiao.demo.properties;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
