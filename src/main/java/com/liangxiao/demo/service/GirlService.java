@@ -23,11 +23,13 @@ public class GirlService {
         Girl A = new Girl();
         A.setAge(12);
         A.setHair("black");
+//        A.setRange(61);
         girlRepository.save(A);
 
         Girl B = new Girl();
         B.setAge(12);
         B.setHair("black");
+//        B.setRange(72);
         girlRepository.save(B);
     }
 }

@@ -59,15 +59,15 @@ public class GirlController {
 
     //更新
     @PutMapping(value = "/girls/{id}")
-    public Girl girlUpdateOne(@PathVariable("id") Integer id,
+    public Object girlUpdateOne(@PathVariable("id") Integer id,
                               @Valid Girl girl, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            return bindingResult.getFieldError().getDefaultMessage();
         }
         girl.setId(girl.getId());
         girl.setAge(girl.getAge());
         girl.setHair(girl.getHair());
+//        girl.setRange(girl.getRange());
         girlRepository.save(girl);
         return girl;
     }
