@@ -1,8 +1,10 @@
 package com.liangxiao.demo.controller;
 
 import com.liangxiao.demo.domain.Girl;
+import com.liangxiao.demo.domain.Result;
 import com.liangxiao.demo.repository.GirlRepository;
 import com.liangxiao.demo.service.GirlService;
+import com.liangxiao.demo.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -59,17 +61,15 @@ public class GirlController {
 
     //更新
     @PutMapping(value = "/girls/{id}")
-    public Object girlUpdateOne(@PathVariable("id") Integer id,
-                              @Valid Girl girl, BindingResult bindingResult) {
+    public Result<Girl> girlUpdateOne(@PathVariable("id") Integer id,
+                                      @Valid Girl girl, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return bindingResult.getFieldError().getDefaultMessage();
+            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
         }
         girl.setId(girl.getId());
         girl.setAge(girl.getAge());
         girl.setHair(girl.getHair());
-//        girl.setRange(girl.getRange());
-        girlRepository.save(girl);
-        return girl;
+        return ResultUtil.success(girlRepository.save(girl));
     }
 
     //删除
@@ -88,5 +88,11 @@ public class GirlController {
     @PostMapping(value = "/girls/two")
     public void girlTwo() {
         girlService.insertTwo();
+    }
+
+    //获取年龄
+    @GetMapping(value = "/girls/getAge/{id}")
+    public void getAge(@PathVariable("id") Integer id) throws Exception {
+        girlService.getAge(id);
     }
 }
