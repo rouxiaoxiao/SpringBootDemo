@@ -33,7 +33,7 @@ public class GirlController {
      * @return
      */
     @GetMapping(value = "/girls")
-    public List<Girl> girlList() throws Exception {
+    public List<Girl> girlList() {
         return girlRepository.findAll();
     }
 

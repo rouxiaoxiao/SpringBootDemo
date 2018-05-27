@@ -28,8 +28,8 @@ public class GirlControllerTest {
 
     @Test
     public void girlList() throws Exception {
-//        mvc.perform(MockMvcRequestBuilders.get("/girl/girls"))
-//                .andExpect(MockMvcResultMatchers.status().isOk());
+        mvc.perform(MockMvcRequestBuilders.get("/girls"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
 //                .andExpect(MockMvcResultMatchers.content().string("abc"));
     }
 }
