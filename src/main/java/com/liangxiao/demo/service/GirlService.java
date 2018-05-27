@@ -1,5 +1,6 @@
 package com.liangxiao.demo.service;
 
+import com.liangxiao.demo.Enums.ResultEnum;
 import com.liangxiao.demo.domain.Girl;
 import com.liangxiao.demo.exception.GirlException;
 import com.liangxiao.demo.repository.GirlRepository;
@@ -36,9 +37,15 @@ public class GirlService {
         Girl girl = girlRepository.getOne(id);
         Integer age = girl.getAge();
         if (age < 10) {
-            throw new GirlException(101, "小学生");
+            throw new GirlException(ResultEnum.PRIMARY_SCHOOL);
         } else if (age >= 10 && age > 16) {
-            throw new GirlException(102, "初中生");
+            throw new GirlException(ResultEnum.MIDDLE_SCHOOL);
         }
+    }
+
+
+    //通过id查询一个女生的信息并返回
+    public Girl findOne(Integer id) {
+        return girlRepository.findOne(id);
     }
 }
